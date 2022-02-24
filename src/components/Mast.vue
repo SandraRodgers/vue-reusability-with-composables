@@ -2,7 +2,7 @@
   <div class="mast">
     <div class="container">
       <div class="image-container">
-        <img ref="imageRef" src="https://source.unsplash.com/Mv9hjnEUHR4" />
+        <img ref="imageRef" src="../assets/meatball.jpeg" />
       </div>
       <div ref="textRef" class="text-container">
         <p>

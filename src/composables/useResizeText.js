@@ -1,4 +1,4 @@
-import { ref, watch, onUnmounted } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import useWindowEvent from "./useWindowEvent";
 
 export default function useResizeText(
@@ -20,10 +20,12 @@ export default function useResizeText(
   }
 
   //set initial value
-  if (triggerElement.value) {
-    elementWidth.value = triggerElement.value.offsetWidth;
-    setTextStyles();
-  }
+  onMounted(() => {
+    if (triggerElement.value) {
+      elementWidth.value = triggerElement.value.offsetWidth;
+      setTextStyles();
+    }
+  });
 
   //function to set text styles on mount and in watcher
   function setTextStyles() {

@@ -2,7 +2,7 @@
   <div class="mast">
     <div class="container">
       <div class="image-container">
-        <img ref="imageRef" src="https://source.unsplash.com/Mv9hjnEUHR4" />
+        <img ref="imageRef" src="../assets/meatball.jpeg" />
       </div>
       <div ref="textRef" class="text-container">
         <p>
@@ -12,33 +12,24 @@
       </div>
     </div>
   </div>
-  Width:{{ elementWidth ? elementWidth : initialWidth }}
+  Width:{{ elementWidth }}
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import useResizeText from "../composables/useResizeText";
 export default {
   name: "Mast",
   setup() {
-    let initialWidth = ref(0);
-
     //template refs
     let imageRef = ref(null);
     let textRef = ref(null);
-
-    onMounted(() => {
-      //send in refs
-      const { elementWidth } = useResizeText(imageRef, textRef);
-      //get initial width for template
-      initialWidth.value = elementWidth.value;
-    });
 
     //destructure to get data sent back from the composable
     //get updated width for template
     const { elementWidth } = useResizeText(imageRef, textRef);
 
-    return { imageRef, textRef, elementWidth, initialWidth };
+    return { imageRef, textRef, elementWidth };
   },
 };
 </script>
